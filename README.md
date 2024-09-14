@@ -40,8 +40,6 @@ OpenLane is an open-source, automated, and customizable physical design flow for
 
 This toolchain is popular among chip designers who prefer an open-source approach for silicon development.
 
-
-
-
+![Screenshot 2024-09-14 214119](https://github.com/user-attachments/assets/8b429601-b477-42f5-b707-4ba6014a4803)
 
     
