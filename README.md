@@ -191,12 +191,31 @@ Cloning custom inverter standard cell design repository
 
 ![Screenshot from 2024-09-08 18-07-46](https://github.com/user-attachments/assets/8b650bc9-0325-4eb1-95f8-d71c32665df9)
 
-Extracting CMOS inverter to SPICE characterization
+## Extracting CMOS inverter to SPICE characterization
+line code for spice
+```bash
+ pwd
+ extract all
+ ext2spice cthresh 0 rthresh 0
+ ext2spice
+```
 
 ![WhatsApp Image 2024-09-15 at 6 41 34 PM](https://github.com/user-attachments/assets/153ef8a5-8a57-464a-beb7-e9ff15c975a9)
 
 ![WhatsApp Image 2024-09-15 at 6 41 53 PM](https://github.com/user-attachments/assets/650889ff-f858-44e6-ace6-063ce0794773)
 
+Opening SPICE extracted file
+```bash
+  vim sky130_inv.spice
+```
+
+![WhatsApp Image 2024-09-15 at 8 55 32 PM](https://github.com/user-attachments/assets/e4bd7c52-5ca8-44db-8942-f4d2a0fb57ed)
+
+ploting the SPICE
+```bash
+ ngspice sky130_inv.spice
+ plot y vs time a
+```
 ![WhatsApp Image 2024-09-15 at 6 42 03 PM](https://github.com/user-attachments/assets/44cb0a55-260d-422c-b4ef-e54e4604ea02)
 ![WhatsApp Image 2024-09-15 at 6 42 18 PM](https://github.com/user-attachments/assets/2ec0a303-dfd0-46e5-a5b3-3dc710b08cf5)
 
