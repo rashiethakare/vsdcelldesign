@@ -43,3 +43,41 @@ This toolchain is popular among chip designers who prefer an open-source approac
 ![Screenshot 2024-09-14 214119](https://github.com/user-attachments/assets/8b429601-b477-42f5-b707-4ba6014a4803)
 
     
+
+## Design Preparation Steps
+
+
+
+```bash
+cd Desktop/work/tool/openlane_working_dir/openlane
+docker
+./flow.tcl -interactive
+```
+    
+## Design Preparation Steps
+
+Getting start with openlane interactive 
+
+Step 1 
+
+```bash
+cd Desktop/work/tools/openlane_working_dir/openlane
+```
+
+Step 2
+
+```bash
+  docker
+```
+
+Step 3
+
+```bash
+  ./flow interactive
+```
+
+Step 4
+
+```bash
+  prep -design picorv32a
+```
