@@ -303,7 +303,7 @@ Step 2
 Step 3
 
 ```bash
-ls ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/
+cp libs/sky130_fd_sc_hd__* ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/
 ```
 
 Step 4
@@ -311,8 +311,9 @@ Step 4
 ```bash
   ls ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/
 ```
-![Screenshot from 2024-09-16 11-37-38](https://github.com/user-attachments/assets/6e5e989a-5883-43d6-a781-0f4936bb7a50)
 
+
+![whatsapp](https://github.com/user-attachments/assets/5837cfd3-4f01-4ae8-995a-85cb847c1fa5)
 
 
 
