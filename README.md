@@ -715,6 +715,8 @@ Step 4
 
 ```bash
 package require openlane 0.9
+
+prep -design picorv32a -tag 15-09_05-48 -overwrite
 ```
 
 Step 5
@@ -780,9 +782,25 @@ gen_pdn
 
 ![Screenshot from 2024-09-16 18-45-00](https://github.com/user-attachments/assets/2b91911c-f5bb-47b2-90d6-7e3c06bf0991)
 
+
+
 ![Screenshot from 2024-09-16 18-47-03](https://github.com/user-attachments/assets/df368ad3-82cf-4eee-909f-0428167855d3)
 ![Screenshot from 2024-09-16 18-49-28](https://github.com/user-attachments/assets/8f521026-0749-46c1-8ce5-09b9d8d43f52)
 ![Screenshot from 2024-09-16 19-47-45](https://github.com/user-attachments/assets/3bd6706f-3a05-4abc-b7b7-84291226af20)
 ![Screenshot from 2024-09-16 20-43-09](https://github.com/user-attachments/assets/afcc2f1e-20b6-4b4a-aaaf-043664d7dee5)
+## Change Directory to the PDN DEF File Location
+```bash
+cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/15-09_05-48/tmp/floorplan/
+```
+```bash
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read 14-pdn.def &
+```
+![Screenshot from 2024-09-17 01-29-51](https://github.com/user-attachments/assets/282d1de6-03b0-4a9f-a97f-70a8302bec78)
+![Screenshot from 2024-09-17 01-29-59](https://github.com/user-attachments/assets/5bcbb5fb-e138-4b7c-ba6e-5dcae4815da9)
 
+
+![Screenshot from 2024-09-17 01-30-09](https://github.com/user-attachments/assets/7f700fb6-01f4-4502-a4d0-9110bf65f645)
+
+
+![Screenshot from 2024-09-16 20-43-09](https://github.com/user-attachments/assets/46df5026-c648-4348-8bf4-51d2ec366a98)
 
