@@ -221,11 +221,97 @@ ploting the SPICE
 
 
 
+### SKY_L3 - Lab introduction to Magic tool options and DRC rules
+
+```bash
+ wget http://opencircuitdesign.com/open_pdks/archive/drc_tests.tgz
+ tar xfz drc_tests.tgz
+ cd drc_tests
+```
+![WhatsApp Image 2024-09-15 at 9 38 47 PM](https://github.com/user-attachments/assets/54c73ab9-6bd6-400b-abc9-e21a042e936e)
+
+To view .magicrc file
+```bash
+ gvim .magicrc
+```
+![WhatsApp Image 2024-09-16 at 9 41 22 AM](https://github.com/user-attachments/assets/bde6e5a3-19c4-449a-947b-fc86dc1aca62)
+
+### Result
+
+![WhatsApp Image 2024-09-16 at 9 41 22 AM (1)](https://github.com/user-attachments/assets/3d8aa4b6-0070-4412-b78b-75303c431864)
+![WhatsApp Image 2024-09-16 at 9 41 22 AM (2)](https://github.com/user-attachments/assets/cae80969-1894-4722-b6af-e79b8d3d7aba)
+
+DRC rule for poly.9 in skywater130A pdk
+
+![WhatsApp Image 2024-09-16 at 9 41 22 AM (3)](https://github.com/user-attachments/assets/1d076ff0-b333-4b58-a80d-01c9bd9fe9f3)
+![WhatsApp Image 2024-09-16 at 9 41 22 AM (4)](https://github.com/user-attachments/assets/17356a7a-7a68-4276-aec7-80c3a3c8a1c6)
+![WhatsApp Image 2024-09-16 at 9 41 22 AM (5)](https://github.com/user-attachments/assets/28556827-5632-4cfe-8b28-994b30b6ea74)
 
 
+```bash
+vi sky130A.tech
+```
+![WhatsApp Image 2024-09-16 at 11 15 04 AM](https://github.com/user-attachments/assets/01960d17-29dd-4e33-b340-b27118fb35f6)
+![WhatsApp Image 2024-09-16 at 11 15 04 AM (1)](https://github.com/user-attachments/assets/e2c76095-a42a-4e81-8fbd-81282fb768df)
 
+## Sky130 Day 4 - Pre-layout timing analysis and importance of good clock tree
+SKY_L1 - Lab steps to convert grid info to track info
+A requirement for ports as specified in tracks.info is that they should be at the intersection of horizontal and vertical tracks. The CMOS Inverter ports A and Y are on the li1 layer. It must be ensured that they're on the intersection of horizontal and vertical tracks. We access the tracks.info
+```bash
+cd Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign
+magic -T sky130A.tech sky130_inv.mag &
+```
+![WhatsApp Image 2024-09-16 at 11 22 45 AM](https://github.com/user-attachments/assets/230f2079-46df-41bb-84b2-5efd55035935)
+![WhatsApp Image 2024-09-16 at 11 22 45 AM (1)](https://github.com/user-attachments/assets/a767aed4-0093-4fd1-80d5-ce57233589e3)
 
+To set the grid values in Magic, you can use the grid command.
 
+```bash
+help grid
+grid 0.46um 0.34um 0.23um 0.17um
+```
+Saving the layout
+
+```bash
+save sky130_vsdinv.mag
+magic -T sky130A.tech sky130_vsdinv.mag &
+lef write
+```
+
+### Results
+![WhatsApp Image 2024-09-16 at 11 22 46 AM](https://github.com/user-attachments/assets/fd305b8b-e770-4a80-b253-64fada66fc84)
+![WhatsApp Image 2024-09-16 at 11 22 46 AM (1)](https://github.com/user-attachments/assets/16abc80c-90ae-434d-b808-846efcb2e87c)
+![WhatsApp Image 2024-09-16 at 11 22 49 AM](https://github.com/user-attachments/assets/26fe86ff-bbc1-4da8-9483-5cba12860258)
+
+## SKY_L3 - Introduction to timing libs and steps to include new cell in synthesis
+## Copying lef and LIB files to picorv32a
+
+Copying LEF and Required LIB Files to picorv32a Design's src Directory
+
+Step 1 
+
+```bash
+cp sky130_vsdinv.lef ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/
+```
+
+Step 2
+
+```bash
+ ls ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/
+```
+
+Step 3
+
+```bash
+ls ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/
+```
+
+Step 4
+
+```bash
+  ls ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/
+```
+![Screenshot from 2024-09-16 11-37-38](https://github.com/user-attachments/assets/6e5e989a-5883-43d6-a781-0f4936bb7a50)
 
 
 
