@@ -606,9 +606,183 @@ Seeing the cts file
 ![Screenshot from 2024-09-16 23-03-22](https://github.com/user-attachments/assets/6fa39185-124a-4b0d-9f1f-8a8d88a67560)
 
 ## After cts
+
+running OpenROAD and performing the specified tasks
+
+doing this in openlane terminal
+
+Step 1 
+
+```bash
+openroad
+```
+
+Step 2
+
+```bash
+ read_lef /openLANE_flow/designs/picorv32a/runs/15-09_05-48/tmp/merged.lef
+
+```
+
+Step 3
+
+```bash
+read_def /openLANE_flow/designs/picorv32a/runs/15-09_05-48/results/cts/picorv32a.cts.def
+```
+
+Step 4
+
+```bash
+write_db pico_cts.db
+```
+
+Step 5
+
+```bash
+read_db pico_cts.db
+```
+
+Step 6
+
+```bash
+read_verilog /openLANE_flow/designs/picorv32a/runs/09-09_05-53/results/synthesis/picorv32a.synthesis_cts.v
+```
+
+Step 7
+
+```bash
+read_liberty $::env(LIB_SYNTH_COMPLETE)
+```
+Step 8
+
+```bash
+link_design picorv32a
+```
+Step 9
+
+```bash
+read_sdc /openLANE_flow/designs/picorv32a/src/base.sdc
+```
+
+Step 10
+
+```bash
+set_propagated_clock [all_clocks]
+```
+
+Step 11
+
+```bash
+exit
+```
 ![Screenshot from 2024-09-16 18-13-38](https://github.com/user-attachments/assets/5017d48b-b94e-4d56-a5f5-dc58b50664ce)
 
+![Screenshot from 2024-09-17 00-01-19](https://github.com/user-attachments/assets/0361eaaa-db3d-4f17-9275-24a38437889b)
+
+![Screenshot from 2024-09-17 00-02-21](https://github.com/user-attachments/assets/bc8c1924-6682-4138-b032-0d41516570f6)
+![Screenshot from 2024-09-17 00-03-23](https://github.com/user-attachments/assets/14e6766e-0ce1-4693-bc54-a867d61af025)
+
+![Screenshot from 2024-09-17 00-04-28](https://github.com/user-attachments/assets/1ba46d79-935d-4983-b3df-7fc779ce218d)
+![Screenshot from 2024-09-17 00-04-50](https://github.com/user-attachments/assets/63bd9d8d-be25-4b92-ad11-6080aff23981)
+![Screenshot from 2024-09-17 00-21-36](https://github.com/user-attachments/assets/236236d4-9f8d-4d4e-a273-86f20d11c09e)
+![Screenshot from 2024-09-17 00-23-03](https://github.com/user-attachments/assets/31738830-5af7-4999-bad8-8fe119ab1568)
 
 
+## Sky130 Day 5 - Final steps for RTL2GDS using tritonRoute and openSTA
+SKY_L4 - Routing topology algorithm and final files list post-route
+### Power Distribution Network (PDN) Generation and Layout Exploration in OpenLANE
+
+Change the Directory for invoking the openlane
+Step 1 
+
+```bash
+cd ~/Desktop/work/tools/openlane_working_dir/openlane
+```
+
+Step 2
+
+```bash
+docker
+```
+
+Step 3
+
+```bash
+./flow.tcl -interactive
+```
+
+Step 4
+
+```bash
+package require openlane 0.9
+```
+
+Step 5
+
+```bash
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+add_lefs -src $lefs
+```
+
+Step 6
+
+```bash
+set ::env(SYNTH_STRATEGY) "DELAY 3"
+```
+
+Step 7
+
+```bash
+set ::env(SYNTH_SIZING) 1
+```
+Step 8
+
+```bash
+run_synthesis
+```
+Step 9
+
+```bash
+init_floorplan
+place_io
+tap_decap_or
+```
+
+Step 10
+
+```bash
+run_placement
+```
+
+Step 11
+
+```bash
+run_cts
+```
+Step 12
+
+```bash
+gen_pdn
+```
+![Screenshot from 2024-09-16 18-02-37](https://github.com/user-attachments/assets/6c60832f-f08b-42b8-81d4-a224f31d227a)
+
+![Screenshot from 2024-09-16 18-03-15](https://github.com/user-attachments/assets/2dc8b3ba-ad54-4da3-b9c9-a409d7ebb8f4)
+
+![Screenshot from 2024-09-16 18-03-17](https://github.com/user-attachments/assets/ec8a48f1-607d-4e32-aed3-1f39bbf260ed)
+![Screenshot from 2024-09-16 18-04-12](https://github.com/user-attachments/assets/ad616cf3-1ced-46fa-a75a-be9a318215d5)
+![Screenshot from 2024-09-16 18-04-58](https://github.com/user-attachments/assets/254ff92b-9845-42ee-a82f-7543feb76dcf)
+
+![Screenshot from 2024-09-16 18-05-58](https://github.com/user-attachments/assets/3340ef0d-88d3-43f0-9699-81983b785871)
+
+![Screenshot from 2024-09-16 18-10-48](https://github.com/user-attachments/assets/7bfcf871-c6f7-4c7a-8368-5a5d7b9f9bf8)
+![Screenshot from 2024-09-16 18-10-52](https://github.com/user-attachments/assets/709bea08-cb01-4f1e-a489-d2fdf56a0cd4)
+![Screenshot from 2024-09-16 18-13-38](https://github.com/user-attachments/assets/f648acb7-ce66-4b15-860a-3219b9e809b9)
+
+![Screenshot from 2024-09-16 18-45-00](https://github.com/user-attachments/assets/2b91911c-f5bb-47b2-90d6-7e3c06bf0991)
+
+![Screenshot from 2024-09-16 18-47-03](https://github.com/user-attachments/assets/df368ad3-82cf-4eee-909f-0428167855d3)
+![Screenshot from 2024-09-16 18-49-28](https://github.com/user-attachments/assets/8f521026-0749-46c1-8ce5-09b9d8d43f52)
+![Screenshot from 2024-09-16 19-47-45](https://github.com/user-attachments/assets/3bd6706f-3a05-4abc-b7b7-84291226af20)
+![Screenshot from 2024-09-16 20-43-09](https://github.com/user-attachments/assets/afcc2f1e-20b6-4b4a-aaaf-043664d7dee5)
 
 
