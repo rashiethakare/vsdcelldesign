@@ -487,6 +487,126 @@ magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs
 ![WhatsApp Image 2024-09-16 at 9 43 05 PM (1)](https://github.com/user-attachments/assets/2f6d4a55-53f6-4715-9f90-b3fb1eca3b76)
 
 
+## setting the STA and creating the Base.sdc file
+
+```bash
+cd Desktop/work/tools/openlane_working_dir/openlane
+docker
+./flow.tcl -interactive
+package require openlane 0.9
+prep -design picorv32a
+```
+
+Include newly added LEF files
+
+```bash
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+add_lefs -src $lefs
+```
+
+```bash
+set ::env(SYNTH_SIZING) 1
+```
+
+running the synthesis 
+
+```bash
+run_synthesis
+```
+
+Newly created pre_sta.conf for STA analysis in openlane directory
+Newly created my_base.sdc for STA analysis in openlane/designs/picorv32a/src directory
+
+![Screenshot from 2024-09-16 17-46-22](https://github.com/user-attachments/assets/95c64f40-1eec-49ba-b1a8-669cca1ec7c6)
+![Screenshot from 2024-09-16 17-48-41](https://github.com/user-attachments/assets/2179ab8e-461c-4c86-8243-7d2b723ecd1b)
+![Screenshot from 2024-09-16 17-49-05](https://github.com/user-attachments/assets/ff8ab874-0201-49f1-b922-59eb33a8c27b)
+
+
+Output of pre_sta.conf is equal to synthesis stage
+
+```bash
+sta pre_sta.conf
+```
+
+diong normal synthesis
+![Screenshot from 2024-09-16 17-54-35](https://github.com/user-attachments/assets/f914baba-4576-44cf-b12b-3dc1e80e01fb)
+
+## Clock Tree Synthesis
+Step 1 
+change the directory
+```bash
+cd ~/Desktop/work/tools/openlane_working_dir/openlane
+```
+
+Step 2
+
+```bash
+ docker
+```
+
+Step 3
+
+```bash
+./flow.tcl -interactive
+```
+
+Step 4
+
+```bash
+package require openlane 0.9
+```
+
+Step 5
+
+```bash
+prep -design picorv32a -tag 15-09_05-48 -overwrite
+```
+
+Step 6
+
+```bash
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+add_lefs -src $lefs
+```
+
+Step 7
+
+```bash
+set ::env(SYNTH_STRATEGY) "DELAY 3"
+```
+Step 8
+
+```bash
+set ::env(SYNTH_SIZING) 1
+```
+Step 9
+
+```bash
+run_synthesis
+```
+![Screenshot from 2024-09-16 18-02-37](https://github.com/user-attachments/assets/3567aeb2-15b7-4e9a-bd80-2bca3992dc7b)
+![Screenshot from 2024-09-16 18-03-15](https://github.com/user-attachments/assets/9d843775-3001-417b-a554-a31df9d353d6)
+![Screenshot from 2024-09-16 18-03-17](https://github.com/user-attachments/assets/d171018b-c046-4401-9851-721ac4c98a98)
+![Screenshot from 2024-09-16 18-04-12](https://github.com/user-attachments/assets/8dd8e8c5-dc11-4725-87ca-9f31ee69d3e0)
+
+Step 10
+
+```bash
+run_floorplan
+```
+![Screenshot from 2024-09-16 18-04-58](https://github.com/user-attachments/assets/e492f1de-66ea-4b80-b6e4-d0bb4ce1662a)
+
+Running the cts
+![Screenshot from 2024-09-16 18-05-58](https://github.com/user-attachments/assets/39ec2753-fbd7-4f48-8563-ecb6f56d3cfa)
+![Screenshot from 2024-09-16 18-10-48](https://github.com/user-attachments/assets/4010c56a-2337-4b71-b091-23d82b16cc70)
+Seeing the cts file
+```bash
+/home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/15-09_05-48/results/synthesis
+```
+![Screenshot from 2024-09-16 23-03-22](https://github.com/user-attachments/assets/6fa39185-124a-4b0d-9f1f-8a8d88a67560)
+
+## After cts
+![Screenshot from 2024-09-16 18-13-38](https://github.com/user-attachments/assets/5017d48b-b94e-4d56-a5f5-dc58b50664ce)
 
 
 
