@@ -312,8 +312,183 @@ Step 4
   ls ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/
 ```
 
+![Screenshot from 2024-09-16 13-35-53](https://github.com/user-attachments/assets/4e88eaad-e06c-409b-9bb9-35297bbdea6b)
 
-![whatsapp](https://github.com/user-attachments/assets/5837cfd3-4f01-4ae8-995a-85cb847c1fa5)
+### Editing the config.tcl and adding new lef file
+## LIB Files adding steps
+
+this are adding in config.tcl Files
+
+Step 1 
+
+```bash
+set ::env(LIB_SYNTH) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__typical.lib"
+
+```
+
+Step 2
+
+```bash
+ set ::env(LIB_FASTEST) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__fast.lib"
+```
+
+Step 3
+
+```bash
+set ::env(LIB_SLOWEST) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__slow.lib"
+```
+
+Step 4
+
+```bash
+set ::env(LIB_TYPICAL) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__typical.lib"
+```
+## Custom LEF File
+```bash
+set ::env(EXTRA_LEFS) [glob $::env(OPENLANE_ROOT)/designs/$::env(DESIGN_NAME)/src/*.lef]
+```
+
+![WhatsApp Image 2024-09-16 at 8 55 50 PM](https://github.com/user-attachments/assets/e67d887a-aa20-402d-a992-646155247747)
+
+![WhatsApp Image 2024-09-16 at 8 55 50 PM (1)](https://github.com/user-attachments/assets/99b5ed6b-68f4-4936-b016-1dc2134d3a26)
+
+
+# Invoking OpenLANE FLOW
+
+this are adding in config.tcl Files
+
+Step 1 
+
+change the directory
+```bash
+cd Desktop/work/tools/openlane_working_dir/openlane
+```
+
+Step 2
+
+```bash
+ docker
+```
+
+Step 3
+
+```bash
+./flow.tcl -interactive
+```
+
+Step 4
+
+```bash
+package require openlane 0.9
+```
+
+Step 5
+
+```bash
+prep -design picorv32a
+```
+
+Step 6
+
+```bash
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+add_lefs -src $lefs
+```
+Step 7
+
+```bash
+run_synthesis
+```
+
+![WhatsApp Image 2024-09-16 at 9 27 51 PM](https://github.com/user-attachments/assets/84fdab73-21e8-4f0d-8569-9f2d67e8f991)
+
+![WhatsApp Image 2024-09-16 at 9 27 51 PM](https://github.com/user-attachments/assets/cf348915-2342-4ab2-81ed-f13be01288ff)
+
+![WhatsApp Image 2024-09-16 at 9 27 51 PM (1)](https://github.com/user-attachments/assets/c57f3b69-7373-4b11-92e9-411e827cd3b4)
+![WhatsApp Image 2024-09-16 at 9 27 54 PM](https://github.com/user-attachments/assets/435ddf4c-c986-4745-a755-f90c93118f65)
+
+## Updating Design Variables, Including Custom LEF, and Running Synthesis for picorv32a
+
+
+```bash
+prep -design picorv32a -tag 15-09_05-48 -overwrite
+
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+add_lefs -src $lefs
+
+echo $::env(SYNTH_STRATEGY)
+
+set ::env(SYNTH_STRATEGY) "DELAY 3"
+
+echo $::env(SYNTH_BUFFERING)
+
+echo $::env(SYNTH_SIZING)
+
+set ::env(SYNTH_SIZING) 1
+
+echo $::env(SYNTH_DRIVING_CELL)
+
+run_synthesis
+```
+![WhatsApp Image 2024-09-16 at 9 42 57 PM](https://github.com/user-attachments/assets/ef6c3021-7c43-4c65-a914-5916e2dcf9ed)
+![WhatsApp Image 2024-09-16 at 9 42 57 PM (1)](https://github.com/user-attachments/assets/14660c47-53c2-4c8b-8ba8-59b1d68077ed)
+![WhatsApp Image 2024-09-16 at 9 42 57 PM (2)](https://github.com/user-attachments/assets/4ada8b85-e462-4e08-bb56-647f5b093096)
+![WhatsApp Image 2024-09-16 at 9 42 57 PM (3)](https://github.com/user-attachments/assets/7bab2d04-3e18-4a6a-b1ad-b603d9ee5344)
+![WhatsApp Image 2024-09-16 at 9 42 58 PM](https://github.com/user-attachments/assets/07ad45a2-2a81-4dc9-913b-ef848e19b777)
+## Running the Floorplan 
+
+```bash
+run_floorplan
+```
+
+![WhatsApp Image 2024-09-16 at 9 42 59 PM](https://github.com/user-attachments/assets/765797e2-4cfa-46d7-ba73-d67c4e5eb11e)
+
+If getting error in floorplan running 
+
+![WhatsApp Image 2024-09-16 at 9 43 00 PM](https://github.com/user-attachments/assets/c05cbc5b-7818-48e8-87c6-c67066eab731)
+
+run this to get floorplan
+
+```bash
+init_floorplan
+place_io
+tap_decap_or
+```
+![WhatsApp Image 2024-09-16 at 9 43 01 PM](https://github.com/user-attachments/assets/a37cfd5a-764e-4d9c-8923-02f04eb9b19e)
+
+![WhatsApp Image 2024-09-16 at 9 43 01 PM (1)](https://github.com/user-attachments/assets/436d5652-d6b4-4549-b9e6-303029345980)
+
+![WhatsApp Image 2024-09-16 at 9 43 04 PM](https://github.com/user-attachments/assets/1b40034e-cd6b-47ce-ae95-8139cc5fb95b)
+
+## NEXT running the placement 
+
+```bash
+run_placement 
+```
+![WhatsApp Image 2024-09-16 at 9 43 04 PM (1)](https://github.com/user-attachments/assets/60212505-8b5f-495e-9432-bf10f8dfcc80)
+
+![WhatsApp Image 2024-09-16 at 9 43 04 PM (2)](https://github.com/user-attachments/assets/e9b5eddd-1242-4db7-b725-50992837dd4e)
+
+moving to new terminal
+
+```bash
+cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/09-09_06-53/results/placement/
+```
+seeing the placement
+
+```bash
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def &
+```
+
+![WhatsApp Image 2024-09-16 at 9 43 04 PM (3)](https://github.com/user-attachments/assets/2a8f6681-c821-45e6-8aeb-d8c77c3583e7)
+
+![WhatsApp Image 2024-09-16 at 9 43 05 PM](https://github.com/user-attachments/assets/c73e48f0-b2f7-465f-a6da-39ff5c86a31d)
+
+![WhatsApp Image 2024-09-16 at 9 43 05 PM (1)](https://github.com/user-attachments/assets/2f6d4a55-53f6-4715-9f90-b3fb1eca3b76)
+
+
+
+
 
 
 
