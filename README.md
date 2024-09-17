@@ -485,6 +485,8 @@ magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs
 ![WhatsApp Image 2024-09-16 at 9 43 05 PM](https://github.com/user-attachments/assets/c73e48f0-b2f7-465f-a6da-39ff5c86a31d)
 
 ![WhatsApp Image 2024-09-16 at 9 43 05 PM (1)](https://github.com/user-attachments/assets/2f6d4a55-53f6-4715-9f90-b3fb1eca3b76)
+![Screenshot from 2024-09-17 20-14-26](https://github.com/user-attachments/assets/93e824b3-e88e-4dd8-9447-ba9b04f0d23d)
+![Screenshot from 2024-09-17 20-14-30](https://github.com/user-attachments/assets/dcb817ff-f2da-4055-a11e-a97c33812a66)
 
 
 ## setting the STA and creating the Base.sdc file
