@@ -804,5 +804,27 @@ magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs
 ![Screenshot from 2024-09-17 01-30-09](https://github.com/user-attachments/assets/7f700fb6-01f4-4502-a4d0-9110bf65f645)
 
 
-![Screenshot from 2024-09-16 20-43-09](https://github.com/user-attachments/assets/46df5026-c648-4348-8bf4-51d2ec366a98)
+Perfrom detailed routing using TritonRoute and explore the routed layout.
+on openlane
+```bash
+echo $::env(CURRENT_DEF)
+```
+```bash
+echo $::env(ROUTING_STRATEGY)
+```
+```bash
+run_routing
+```
+![Screenshot from 2024-09-20 23-46-12](https://github.com/user-attachments/assets/6e061e3e-a4da-47ca-a7c2-45406053bd1f)
 
+Change directory to path containing routed def
+
+```bash
+cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/20-09_17-58/results/routing/
+```
+```bash
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.def &
+```
+![Screenshot from 2024-09-20 23-53-18](https://github.com/user-attachments/assets/41403737-876c-4f9b-bbc2-39bf1f0e6de4)
+
+![Screenshot from 2024-09-20 23-53-24](https://github.com/user-attachments/assets/9dce238a-f88a-4ffa-80bf-7b2245312690)
