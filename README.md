@@ -1,5 +1,5 @@
 
-#  Digital VLSI SoC Design and Planning (Picorv32)
+#  Digital VLSI SoC Design and Planning (Picorv32) 
 
 
 ## DAY 1 - Inception of open-source EDA, OpenLANE and Sky130 PDK
