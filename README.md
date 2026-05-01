@@ -828,3 +828,6 @@ magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs
 ![Screenshot from 2024-09-20 23-53-18](https://github.com/user-attachments/assets/41403737-876c-4f9b-bbc2-39bf1f0e6de4)
 
 ![Screenshot from 2024-09-20 23-53-24](https://github.com/user-attachments/assets/9dce238a-f88a-4ffa-80bf-7b2245312690)
+
+
+This project successfully demonstrates the complete implementation of a 32-bit RISC-V processor, PicoRV32, using a fully open-source Digital VLSI design flow. The design was taken from RTL to GDSII using industry-relevant tools such as OpenLane, Yosys, Magic VLSI, and KLayout. The PicoRV32 core was synthesized, floorplanned, placed, routed, and verified through timing analysis to ensure correct functionality. A custom CMOS inverter standard cell was also designed and validated using Magic and NGSpice, contributing to the understanding of cell-level design. The final layout was verified to be DRC and LVS clean, ensuring it is fabrication-ready. Overall, the project proves the feasibility of implementing a processor-level SoC using open-source tools and demonstrates end-to-end chip design capability from hardware description to physical layout generation.
